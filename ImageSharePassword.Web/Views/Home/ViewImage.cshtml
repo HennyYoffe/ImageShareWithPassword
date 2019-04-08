@@ -1,0 +1,30 @@
+﻿@model ImageSharePassword.Web.Models.ViewImageViewModel
+
+@if (!Model.HasPermissionToView)
+{
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 well">
+            @if (!String.IsNullOrEmpty(Model.Message))
+            {
+                <h3 class="alert-danger">@Model.Message</h3>
+            }
+            <h4>Please enter the password for this image:</h4>
+            <form method="post" action="/home/viewimage">
+                <input type="hidden" name="id" value="@Model.Image.Id" />
+                <input type="text" class="form-control" placeholder="Password" name="password" />
+                <br />
+                <button class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 well">
+            <img src="/UploadedImages/@Model.Image.FileName" style="width: 800px;" />
+            <br />
+            <h3>Views: @Model.Image.Views</h3>
+        </div>
+    </div>
+}

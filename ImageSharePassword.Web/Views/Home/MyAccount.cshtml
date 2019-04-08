@@ -1,0 +1,29 @@
+﻿@using ImageSharePassword.Data
+@model List<Image>
+@{           
+
+                ViewBag.Title = "MyAccount";
+}
+
+<div class="row header">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <tr style="text-align:center;vertical-align:middle;">
+                <th style="text-align:center;vertical-align:middle;width:45%">Image</th>
+                <th style="text-align:center;vertical-align:middle;">Views</th>           
+            </tr>
+            @foreach (Image i in Model)
+            {
+                <tr>
+                    <td style="text-align:center;vertical-align:middle;">
+                        <img src="/UploadedImages/@i.FileName" style="width: 300px;" />
+                    </td>
+                    <td style="text-align:center;vertical-align:middle;">
+                        @i.Views
+                    </td>                   
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
